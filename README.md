@@ -1,6 +1,8 @@
 # neovim-docker
 ## builded from neovim source code
 
+![](./example.png)
+
 first run
 ```
 docker run --name neovim -d aspushedp/neovim

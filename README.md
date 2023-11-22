@@ -1,7 +1,10 @@
 # neovim-docker
-## Built from the Neovim source code, it natively supports both arm64 and amd64 platforms
+## Built from the Neovim source code, it natively supports both arm64 and amd64 platforms.
 
-![](./example.png)
+![](./img/example.png)
+![](./img/example1.png)
+
+## You need to install the nerd font on the host first, otherwise the icons will not be displayed.
 
 To run for the first time:
 ```

@@ -17,4 +17,5 @@ jobs:
     - name: Build the Docker image
       run: | 
         git submodule update --init
-        docker build . --file Dockerfile --tag aspushedp/neovim
+        docker build . --file Dockerfile --tag aspushedp/neovim:arm64 --platform linux/arm64
+        docker build . --file Dockerfile --tag aspushedp/neovim:amd64 --platform linux/amd64

@@ -1,27 +1,27 @@
 # neovim-docker
-## builded from neovim source code
+## Built from the Neovim source code
 
 ![](./example.png)
 
-first run
+To run for the first time:
 ```
 docker run --name neovim -d aspushedp/neovim
 ```
-or
+Alternatively, if you want to mount your own config and projects:
 ```
-docker run --name neovim -v my-nvim-config:/root/.config/nvim -v my-projects:/root/projects -d aspushedp/neovim
+docker run --name neovim -v my-nvim-config:/root/.config/nvim -v my-projects:/root/projects -d aspushkedp/neovim
 ```
 
-then every time you need nvim
+Then, whenever you need to use Neovim:
 ```
 docker exec -it neovim nvim
 ```
-or run bash
+Or to run a bash shell:
 ```
 docker exec -it neovim bash
 ```
 
-you also can make a alias in you .bashrc or .zshrc
+You can also create an alias in your .bashrc or .zshrc:
 ```
 alias nvim="docker exec -it neovim nvim"
 ```

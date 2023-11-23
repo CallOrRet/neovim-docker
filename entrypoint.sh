@@ -1,4 +1,4 @@
 #!/bin/bash
 
-#system clipboard server
+# system clipboard server
 lemonade server

@@ -1,5 +1,5 @@
 # neovim-docker
-## Built from the Neovim source code, it natively supports both arm64 and amd64 platforms.
+## Built from the Neovim source code, it natively supports both arm64 and amd64 platforms and includes a basic build environment for Neovim plugins.
 
 ![](./img/example.png)
 ![](./img/example1.png)

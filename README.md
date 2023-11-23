@@ -12,7 +12,7 @@ docker run --name neovim -d aspushedp/neovim
 ```
 Alternatively, if you want to mount your own config and projects:
 ```
-docker run --name neovim -v my-nvim-config:/root/.config/nvim -v my-projects:/root/projects -d aspushkedp/neovim
+docker run --name neovim -v my-nvim-config:/root/.config/nvim -v my-projects:/root/projects -d aspushedp/neovim
 ```
 
 Then, whenever you need to use Neovim:

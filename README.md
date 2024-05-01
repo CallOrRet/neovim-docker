@@ -1,5 +1,5 @@
 # neovim-docker
-[![Docker Image CI](https://github.com/push-edp/neovim-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/push-edp/neovim-docker/actions/workflows/docker-image.yml)
+[![Docker Image CI](https://github.com/CallOrRet/neovim-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/CallOrRet/neovim-docker/actions/workflows/docker-image.yml)
 ## Built from the Neovim source code, it natively supports both arm64 and amd64 platforms and includes a basic build environment for Neovim plugins.
 
 ![](./img/example.png)
@@ -9,11 +9,11 @@
 
 To run for the first time:
 ```
-docker run --name neovim -d aspushedp/neovim
+docker run --name neovim -d callorret/neovim
 ```
 Alternatively, if you want to mount your own config and projects:
 ```
-docker run --name neovim -v my-nvim-config:/root/.config/nvim -v my-projects:/root/projects -d aspushedp/neovim
+docker run --name neovim -v my-nvim-config:/root/.config/nvim -v my-projects:/root/projects -d callorret/neovim
 ```
 
 Then, whenever you need to use Neovim:

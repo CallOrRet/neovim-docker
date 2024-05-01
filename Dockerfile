@@ -1,6 +1,6 @@
 FROM debian:stable-slim AS base
 
-LABEL maintainer="push-edp aspushedp@gmail.com"
+LABEL maintainer="CallOrRet CallOrRet@gmail.com"
 
 WORKDIR /root
 
@@ -16,7 +16,7 @@ RUN make install
 
 FROM debian:stable-slim
 
-LABEL maintainer="push-edp aspushedp@gmail.com"
+LABEL maintainer="CallOrRet CallOrRet@gmail.com"
 
 WORKDIR /root
 

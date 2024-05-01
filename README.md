@@ -2,8 +2,8 @@
 [![Docker Image CI](https://github.com/CallOrRet/neovim-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/CallOrRet/neovim-docker/actions/workflows/docker-image.yml)
 ## Built from the Neovim source code, it natively supports both arm64 and amd64 platforms and includes a basic build environment for Neovim plugins.
 
-![](./img/example.png)
-![](./img/example1.png)
+![](./img/1.png)
+![](./img/2.png)
 
 ## You need to install the nerd font on the host first, otherwise the icons will not be displayed.
 

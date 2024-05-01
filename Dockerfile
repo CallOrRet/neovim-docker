@@ -5,7 +5,7 @@ LABEL maintainer="CallOrRet CallOrRet@gmail.com"
 WORKDIR /root
 
 RUN apt-get update -y
-RUN apt-get install -y ninja-build gettext cmake unzip curl
+RUN apt-get install -y ninja-build gettext cmake unzip curl fd-find ripgrep
 
 COPY ./neovim /root/neovim
 

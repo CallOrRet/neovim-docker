@@ -13,7 +13,7 @@ docker run --name neovim -d callorret/neovim
 ```
 Alternatively, if you want to mount your own config and projects:
 ```
-docker run --name neovim -v my-nvim-config:/root/.config/nvim -v my-projects:/root/projects -d callorret/neovim
+docker run --name neovim -v my-nvim-config:/root/.config/nvim -v /path/my-projects:/path/my-projects -dit callorret/neovim
 ```
 Refer to the above example images included from my Neovim config: [https://github.com/CallOrRet/neovim-config](https://github.com/CallOrRet/neovim-config)
 

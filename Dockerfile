@@ -5,7 +5,7 @@ LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 WORKDIR /root
 
 RUN apt-get update -y
-RUN apt-get install -y ninja-build gettext cmake unzip curl fd-find ripgrep
+RUN apt-get install -y ninja-build gettext cmake unzip curl
 
 COPY ./neovim /root/neovim
 
@@ -21,7 +21,7 @@ LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 WORKDIR /root
 
 RUN apt-get update -y
-RUN apt-get install -y git curl unzip build-essential
+RUN apt-get install -y git curl unzip build-essential fd-find ripgrep
 
 COPY --from=base /usr/local /usr/local
 

@@ -1,6 +1,6 @@
 FROM debian:stable-slim AS base
 
-LABEL maintainer="CallOrRet CallOrRet@gmail.com"
+LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 
 WORKDIR /root
 
@@ -16,7 +16,7 @@ RUN make install
 
 FROM debian:stable-slim
 
-LABEL maintainer="CallOrRet CallOrRet@gmail.com"
+LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 
 WORKDIR /root
 

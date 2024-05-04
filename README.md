@@ -9,14 +9,15 @@
 ![](./img/5.png)
 
 ## You need to install the nerd font on the host first, otherwise the icons will not be displayed.
+[NerdFont](https://www.nerdfonts.com/)
 
 To run for the first time:
 ```
-docker run --name neovim -d callorret/neovim
+docker run --name neovim -d callandret/neovim
 ```
 Alternatively, if you want to mount your own config and projects:
 ```
-docker run --name neovim -v my-nvim-config:/root/.config/nvim -v /path/my-projects:/path/my-projects -dit callorret/neovim
+docker run --name neovim -v my-nvim-config:/root/.config/nvim -v /path/my-projects:/path/my-projects -dit callandret/neovim
 ```
 Refer to the above example images included from my Neovim config: [https://github.com/CallOrRet/neovim-config](https://github.com/CallOrRet/neovim-config)
 

@@ -1,4 +1,4 @@
-FROM debian:stable-slim AS base
+FROM debian:stable-slim AS builder
 
 LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 
@@ -21,9 +21,9 @@ LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 WORKDIR /root
 
 RUN apt-get update -y
-RUN apt-get install -y git curl unzip build-essential fd-find ripgrep
+RUN apt-get install -y git wget curl unzip build-essential fd-find ripgrep fzf
 
-COPY --from=base /usr/local /usr/local
+COPY --from=builder /usr/local /usr/local
 
 ARG TARGETARCH
 

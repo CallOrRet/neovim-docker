@@ -21,7 +21,7 @@ LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 WORKDIR /root
 
 RUN apt-get update -y
-RUN apt-get install -y git wget curl unzip build-essential fd-find ripgrep fzf
+RUN apt-get install -y git wget curl unzip build-essential fzf fd-find ripgrep lazygit
 
 COPY --from=builder /usr/local /usr/local
 

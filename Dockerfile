@@ -1,7 +1,5 @@
 FROM debian:stable-slim AS builder
 
-LABEL maintainer="CallOrRet CallOrRet@outlook.com"
-
 WORKDIR /root
 
 RUN apt-get update -y

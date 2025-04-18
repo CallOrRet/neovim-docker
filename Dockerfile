@@ -1,16 +1,13 @@
 FROM debian:stable-slim AS builder
 
-WORKDIR /root
+RUN apt-get update -y && \
+    apt-get install -y ninja-build curl cmake unzip gettext 
 
-RUN apt-get update -y
-RUN apt-get install -y ninja-build gettext cmake unzip curl
+COPY neovim /neovim
 
-COPY ./neovim /root/neovim
+WORKDIR /neovim
 
-WORKDIR /root/neovim
-
-RUN make CMAKE_BUILD_TYPE=Release
-RUN make install
+RUN make CMAKE_BUILD_TYPE=Release && make install
 
 FROM debian:stable-slim
 
@@ -18,12 +15,16 @@ LABEL maintainer="CallOrRet CallOrRet@outlook.com"
 
 WORKDIR /root
 
-RUN apt-get update -y
-RUN apt-get install -y git wget curl unzip build-essential fzf fd-find ripgrep
+ARG TARGETARCH
 
 COPY --from=builder /usr/local /usr/local
 
-ARG TARGETARCH
+RUN apt-get update -y && \
+    apt-get install -y build-essential git fzf wget curl unzip fd-find ripgrep
+
+RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') && \
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${TARGETARCH}.tar.gz" && \
+    tar xf lazygit.tar.gz lazygit && install lazygit -D -t /usr/local/bin/ && rm -rf lazygit
 
 COPY ./lemonade/lemonade_${TARGETARCH} /usr/local/bin/lemonade
 

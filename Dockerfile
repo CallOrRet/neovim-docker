@@ -27,7 +27,12 @@ RUN apt install -y locales && \
     localedef -c -i en_US -f UTF-8 en_US.UTF-8
 
 RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') && \
-    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${TARGETARCH}.tar.gz" && \
+    case "${TARGETARCH}" in \
+    "amd64")  LAZYGIT_ARCH="x86_64" ;; \
+    "arm64")  LAZYGIT_ARCH="arm64" ;; \
+    *)        exit 1 ;; \
+    esac && \
+    curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz" && \
     tar xf lazygit.tar.gz lazygit && install lazygit -D -t /usr/local/bin/ && rm -rf lazygit
 
 COPY ./lemonade/lemonade_${TARGETARCH} /usr/local/bin/lemonade

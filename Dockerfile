@@ -1,7 +1,7 @@
 FROM debian:stable-slim AS builder
 
 RUN apt-get update -y && \
-  apt-get install -y ninja-build curl cmake unzip gettext
+  apt-get install -y  git curl cmake unzip gettext ninja-build build-essential
 
 COPY neovim /neovim
 
@@ -20,11 +20,7 @@ ARG TARGETARCH
 COPY --from=builder /usr/local /usr/local
 
 RUN apt-get update -y && \
-  apt-get install -y build-essential git fzf wget curl fish unzip fd-find ripgrep
-
-RUN apt-get install -y locales libicu-dev && \
-  locale-gen en_US.UTF-8 && \
-  localedef -c -i en_US -f UTF-8 en_US.UTF-8
+  apt-get install -y git fzf wget curl fish unzip fd-find ripgrep build-essential
 
 RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') && \
   case "${TARGETARCH}" in \

@@ -35,4 +35,6 @@ COPY ./lemonade/lemonade_${TARGETARCH} /usr/local/bin/lemonade
 
 COPY ./entrypoint.sh /entrypoint.sh
 
+RUN useradd -m -s /usr/bin/fish agent
+
 ENTRYPOINT ["/entrypoint.sh"]

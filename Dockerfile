@@ -22,11 +22,16 @@ COPY --from=builder /usr/local /usr/local
 RUN apt-get update -y && \
   apt-get install -y git fzf wget curl fish unzip fd-find ripgrep build-essential
 
-RUN cat > /usr/local/bin/pbcopy <<'EOF' \
-  && chmod +x /usr/local/bin/pbcopy
+RUN cat > /usr/local/bin/osc52-copy <<'EOF' \
+  && chmod +x /usr/local/bin/osc52-copy \
+  && ln -sf /usr/local/bin/osc52-copy /usr/local/bin/pbcopy
 #!/bin/sh
-data=$(cat | base64 | tr -d '\n')
-printf '\033]52;c;%s\a' "$data"
+# Copy stdin to the local terminal clipboard via OSC52.
+# Works in terminals that support OSC52: Ghostty, WezTerm, iTerm2, kitty, etc.
+
+printf '\033]52;c;'
+base64 | tr -d '\r\n'
+printf '\a'
 EOF
 
 RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') && \

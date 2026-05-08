@@ -22,6 +22,13 @@ COPY --from=builder /usr/local /usr/local
 RUN apt-get update -y && \
   apt-get install -y git fzf wget curl fish unzip fd-find ripgrep build-essential
 
+RUN cat > /usr/local/bin/pbcopy <<'EOF' \
+  && chmod +x /usr/local/bin/pbcopy
+#!/bin/sh
+data=$(cat | base64 | tr -d '\n')
+printf '\033]52;c;%s\a' "$data"
+EOF
+
 RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | \grep -Po '"tag_name": *"v\K[^"]*') && \
   case "${TARGETARCH}" in \
   "amd64")  LAZYGIT_ARCH="x86_64" ;; \
@@ -31,10 +38,9 @@ RUN LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygi
   curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_${LAZYGIT_ARCH}.tar.gz" && \
   tar xf lazygit.tar.gz lazygit && install lazygit -D -t /usr/local/bin/ && rm -rf lazygit
 
-COPY ./lemonade/lemonade_${TARGETARCH} /usr/local/bin/lemonade
+RUN useradd -m -s /usr/bin/fish agent
 
 COPY ./entrypoint.sh /entrypoint.sh
 
-RUN useradd -m -s /usr/bin/fish agent
 
 ENTRYPOINT ["/entrypoint.sh"]

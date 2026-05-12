@@ -11,7 +11,7 @@ RUN make CMAKE_BUILD_TYPE=Release && make install
 
 FROM ubuntu:24.04
 
-LABEL maintainer="CallOrRet CallOrRet@outlook.com"
+LABEL maintainer="CallOrRet CallOrRet@icloud.com"
 
 WORKDIR /root
 
